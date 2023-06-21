@@ -10,26 +10,55 @@ function initCanvas(){
 }
 
 function renderMeme() {
-  var meme = getMeme()   
+  var meme = getMeme()  
   drawImgFromlocal(meme)
+  renderEditor()
 }
 
 
-  function onCngTxt(txt){
-    setLineTxt(txt)
-    renderMeme()
+function onCngTxt(txt){
+  setLineTxt(txt)
+  renderMeme()
 
-  }
+}
 
   function onCngColor(color){
     setLineColor(color)
     renderMeme()
   }
 
-  function onChgFontSize(sign){
+  function onChgFontSize(ev, sign){
+    ev.preventDefault()
     setFontSize(sign)
     renderMeme()
   }
+
+  function onAddLine(ev){
+    ev.preventDefault()
+    addLine()
+    renderMeme()
+  }
+
+  function onArrUp(){
+    if(gMeme.selectedLineIdx<=0) return
+    gMeme.selectedLineIdx--
+    renderEditor()
+  }
+
+  function onArrDown(){
+    if(gMeme.selectedLineIdx>=gMeme.lines.length-1) return
+    gMeme.selectedLineIdx++
+    renderEditor()
+  }
+
+  function renderEditor(){
+    var ind = gMeme.selectedLineIdx
+    console.log('ind',ind)
+    document.querySelector('#input-txt').value = gMeme.lines[ind].txt
+    document.querySelector('#color').value = gMeme.lines[ind].color
+  }
+
+
 
   function onDownloadImg(elLink) {
     const imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format

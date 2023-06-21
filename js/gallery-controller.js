@@ -9,7 +9,9 @@ function renderGallery() {
     document.querySelector('.img-container').innerHTML = strHtmls.join('')
 }
 
-function onImgSelect(id){  
+function onImgSelect(id){ 
+    document.querySelector('.gallery').classList.add('hide')
+    document.querySelector('.editor-container').classList.remove('hide') 
     setImg(id)
     renderMeme()
 }

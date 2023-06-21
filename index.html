@@ -13,41 +13,43 @@
     <header>
     <a href="index.html" class="logo">MemeGen</a>
     <nav>
-        <a href="">Galery</a>
+        <a href="">Gallery</a>
         <a href="">Memes</a>
         <a href="">About</a>
     </nav>
     </header>
-    <main class="galery">
+    <main class="gallery">
         <form class="search">
             <input type="search" placeholder="Search" >
             <button>Search</button>
         </form>
-        <section class="img-container">
-            <!-- <img src="meme-imgs/1.jpg" onclick="onImgC(1)">
-            <img src="meme-imgs/2.jpg" >
-            <img src="meme-imgs/3.jpg" >
-            <img src="meme-imgs/4.jpg" >
-            <img src="meme-imgs/5.jpg" >
-            <img src="meme-imgs/6.jpg" >
-            <img src="meme-imgs/7.jpg" >     -->
-        </section>
+        <section class="img-container"></section>
     </main>
-    <main class="memes">
-        <section class="preview">
-            <canvas id="my-canvas" height="450" width="450" onclick="onDraw(event)">
-            </canvas>          
-        </section>
-        <section class="editor">
-            <input class="input-txt" type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
-            <input name="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
-            <button class="icon-btn" onclick="onChgFontSize('+')"><img class="icon-img" src="icons/increase font - icon.png"></button>
-            <button class="icon-btn" onclick="onChgFontSize('-')"><img class="icon-img" src="icons/decrease font - icon.png"></button>          
-        </section>
-        <section class="publish">
-            <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-            <button  class="publish-btn" onclick="onUploadImg()">Upload on Facebook </button>
-        </section>
+    <main class="editor-container hide">
+        <div class="memes">
+            <section class="preview">
+                <canvas id="my-canvas" height="450" width="450" onclick="onDraw(event)">
+                </canvas>          
+            </section>
+            <section class="editor">
+                <div>
+                    <input id="input-txt" type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
+                </div>
+                <div>
+                    <input id="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
+                    <button class="icon-btn" onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/increase font - icon.png"></button>
+                    <button class="icon-btn" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/decrease font - icon.png"></button>          
+                    <button onclick="onAddLine(event)">Add Line</button>          
+                    <button onclick="onArrUp(event)">Arrow Up</button>
+                    <button onclick="onArrDown(event)">Arrow Down</button>
+                </div>    
+            
+                <section class="publish">
+                    <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
+                    <button  class="publish-btn" onclick="onUploadImg()">Upload on FB </button>
+                </section>
+            </section>
+        </dive>
     </main>
     
     <script src="js/sharing-on-facebook.js"></script>
