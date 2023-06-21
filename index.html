@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/galery.css" />
     <link rel="stylesheet" href="css/memes.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>meme generator</title>
 </head>
 <body onload="onInit()">
@@ -38,9 +39,14 @@
             </canvas>          
         </section>
         <section class="editor">
-            <input type="text" placeholder="text 1" oninput="onCngInpu(this.value)" >
-
-            <!-- <button>up</button> -->
+            <input class="input-txt" type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
+            <input name="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
+            <button class="icon-btn" onclick="onChgFontSize('+')"><img class="icon-img" src="icons/increase font - icon.png"></button>
+            <button class="icon-btn" onclick="onChgFontSize('-')"><img class="icon-img" src="icons/decrease font - icon.png"></button>          
+        </section>
+        <section class="publish">
+            <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+            <button  class="publish-btn" onclick="onUploadImg()">Upload on Facebook </button>
         </section>
     </main>
     
