@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/galery.css" />
+    <link rel="stylesheet" href="css/memes.css" />
+    <title>meme generator</title>
+</head>
+<body onload="onInit()">
+    <header>
+    <a href="index.html" class="logo">MemeGen</a>
+    <nav>
+        <a href="">Galery</a>
+        <a href="">Memes</a>
+        <a href="">About</a>
+    </nav>
+    </header>
+    <main class="galery hide">
+        <form class="search">
+            <input type="search" placeholder="Search" >
+            <button>Search</button>
+        </form>
+        <section class="img-container">
+            <!-- <img src="meme-imgs/1.jpg" onclick="onImgClick(1)">
+            <img src="meme-imgs/2.jpg" >
+            <img src="meme-imgs/3.jpg" >
+            <img src="meme-imgs/4.jpg" >
+            <img src="meme-imgs/5.jpg" >
+            <img src="meme-imgs/6.jpg" >
+            <img src="meme-imgs/7.jpg" >     -->
+        </section>
+    </main>
+    <main class="memes">
+        <section class="preview">
+            <canvas id="my-canvas" height="450" width="450" onclick="onDraw(event)">
+            </canvas>          
+        </section>
+        <!-- <section class="editor">
+            <input type="text" placeholder="text 1" >
+            <button>up</button>
+        </section> -->
+    </main>
+    
+    <script src="js/sharing-on-facebook.js"></script>
+  <script src="js/meme-service.js"></script>
+  <script src="js/meme-controller.js"></script>
+  <script src="js/gallery-service.js"></script>
+  <script src="js/gallery-controller.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

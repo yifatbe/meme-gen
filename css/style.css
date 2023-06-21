@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  background-color: #212427;
+  color: white;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  font-family: 'Figtree', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+}
+
+.logo:visited {
+  color: white;
+}
+
+nav :not(:last-child) {
+  margin-right: 16px;
+}
+
+nav a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: rgb(244, 146, 195);
+}
+
+.hide{
+    display: none;
+}

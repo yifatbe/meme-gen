@@ -1,0 +1,17 @@
+
+.meme{
+    background-color: #dfafaf;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+canvas {
+    display: block;
+    margin: auto;
+    margin-block-start: 10px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+} 
+
