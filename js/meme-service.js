@@ -1,7 +1,7 @@
 'use strict'
 
 var gMeme = { 
-    selectedImgId: 5, 
+    selectedImgId: 2, 
     selectedLineIdx: 0, 
     lines: [ 
         { 
@@ -12,3 +12,17 @@ var gMeme = {
     ] 
 } 
 
+function getMeme(){
+    return gMeme
+}
+
+
+function setLineTxt(txt){
+    // console.log('txt',txt)
+    gMeme.lines[0].txt = txt
+
+  }
+
+  function setImg(id){
+    gMeme.selectedImgId = id
+  }
