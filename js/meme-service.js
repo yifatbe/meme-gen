@@ -5,15 +5,19 @@ var gMeme = {
   lines: [
     {
       txt: 'I sometimes eat Falafel',
+      font: 'Impact',
       size: 20,
       color: '#ff0000',
-      pos:{ x:100, y:20}
+      pos:{ x:10, y:20},
+      textAlign: 'start'
     },
     {
       txt: 'second line',
+      font: 'Impact',
       size: 20,
       color: '#00ff00',
-      pos:{ x:100, y:60}
+      pos:{ x:10, y:60},
+      textAlign: 'start'
     }
   ]
 }
@@ -22,6 +26,10 @@ function getMeme() {
   return gMeme
 }
 
+function setLineFont(value){
+  var ind = gMeme.selectedLineIdx
+  gMeme.lines[ind].font = value
+}
 
 function setLineTxt(txt) {
   // console.log('txt',txt)
@@ -52,10 +60,20 @@ function addLine() {
     txt: 'new line',
     size: 20,
     color: 'pink',
-    pos:{ x:100, y:newY}
+    pos:{ x:20, y:newY}
   }
   gMeme.lines.push(line)
   renderMeme()
+}
+
+function cngTxtPos(newPos){
+  var ind = gMeme.selectedLineIdx
+  gMeme.lines[ind].textAlign = newPos
+// debugger
+  if (newPos==='start') gMeme.lines[ind].pos.x = 10
+  if (newPos==='end') gMeme.lines[ind].pos.x = gCanvas.width -10
+  if (newPos==='center') gMeme.lines[ind].pos.x = gCanvas.width/2
+
 }
 
 function drawImgFromlocal(meme) {
@@ -79,11 +97,21 @@ function drawText(meme) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = line.color
     gCtx.fillStyle = 'black'
-    gCtx.font = line.size + 'px Arial'
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
+    gCtx.font = line.size + 'px ' +line.font
+    gCtx.textAlign = line.textAlign
+    // gCtx.textBaseline = 'middle'
 
     gCtx.fillText(line.txt, x, y)
     gCtx.strokeText(line.txt, x, y)
   });
 }
+
+function drawFrame(line){
+  console.log('line',line)
+  gCtx.strokeStyle = 'black'
+  gCtx.strokeRect(line.pos.x, line.pos.y, 50, 20)
+  // gCtx.fillStyle = 'black'
+  // gCtx.fillRect(line.pos.x, line.pos.y, 50, 20)
+
+}
+

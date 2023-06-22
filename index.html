@@ -42,6 +42,16 @@
                     <button onclick="onAddLine(event)">Add Line</button>          
                     <button onclick="onArrUp(event)">Arrow Up</button>
                     <button onclick="onArrDown(event)">Arrow Down</button>
+                    <button onclick="onTxtPos('start')">Left Text</button>
+                    <button onclick="onTxtPos('center')">Center Text</button>
+                    <button onclick="onTxtPos('end')">Right Text</button>
+
+                    <select class="font-name" onchange="onSetFont(value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Comic San MS">Comic San MS</option>
+                    </select>
+                    
                 </div>    
             
                 <section class="publish">
