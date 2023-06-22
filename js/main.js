@@ -3,7 +3,9 @@
 function onInit(){
     console.log('oninit')
     initCanvas()
+    addListeners()
     renderGallery()
+    
     
 }
 
