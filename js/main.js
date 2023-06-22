@@ -4,5 +4,9 @@ function onInit(){
     console.log('oninit')
     initCanvas()
     renderGallery()
-    // renderMeme()
+    
+}
+
+function onMemes(){
+    renderMemes()
 }

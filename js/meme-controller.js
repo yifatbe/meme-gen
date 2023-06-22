@@ -48,6 +48,9 @@ function onTxtPos(newPos){
   renderMeme()  
 }
 
+function onSave(){
+  saveMeme() 
+}
 function onArrUp() {
   if (gMeme.selectedLineIdx <= 0) return
   gMeme.selectedLineIdx--

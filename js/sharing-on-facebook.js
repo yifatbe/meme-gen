@@ -1,3 +1,6 @@
+'use strict'
+
+
 function onUploadImg() {
     // Gets the image from the canvas
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg') 
@@ -40,6 +43,15 @@ function doUploadImg(imgDataUrl, onSuccess) {
     }
     XHR.open('POST', '//ca-upload.com/here/upload.php')
     XHR.send(formData)
+}
+
+function saveToStorage(key, val) {
+    localStorage.setItem(key, JSON.stringify(val))
+}
+
+function loadFromStorage(key) {
+    var val = localStorage.getItem(key)
+    return JSON.parse(val)
 }
 
 

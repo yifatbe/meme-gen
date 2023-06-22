@@ -13,9 +13,9 @@
     <header>
     <a href="index.html" class="logo">MemeGen</a>
     <nav>
-        <a href="">Gallery</a>
-        <a href="">Memes</a>
-        <a href="">About</a>
+        <a href="" onclick="onGallery()">Gallery</a>
+        <a href="" onclick="onMemes()" >Memes</a>
+        <!-- <a href="">About</a> -->
     </nav>
     </header>
     <main class="gallery">
@@ -37,29 +37,37 @@
                 </div>
                 <div>
                     <input id="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
-                    <button class="icon-btn" onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/increase font - icon.png"></button>
-                    <button class="icon-btn" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/decrease font - icon.png"></button>          
-                    <button onclick="onAddLine(event)">Add Line</button>          
-                    <button onclick="onArrUp(event)">Arrow Up</button>
-                    <button onclick="onArrDown(event)">Arrow Down</button>
-                    <button onclick="onTxtPos('start')">Left Text</button>
-                    <button onclick="onTxtPos('center')">Center Text</button>
-                    <button onclick="onTxtPos('end')">Right Text</button>
-
                     <select class="font-name" onchange="onSetFont(value)">
                         <option value="Impact">Impact</option>
                         <option value="Arial">Arial</option>
                         <option value="Comic San MS">Comic San MS</option>
                     </select>
+                    <div>
+                        <button class="icon-btn" onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/text_increase.png"></button>
+                        <button class="icon-btn" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/text_decrease.png"></button>          
+                        <button class="icon-btn" onclick="onAddLine(event)"><img class="icon-img" src="icons/add.png"></button>
+                        <button class="icon-btn" onclick="onDeleteLine(event)"><img class="icon-img" src="icons/delete.png"></button>
+                        <button class="icon-btn" onclick="onArrUp(event)"><img class="icon-img" src="icons/arrow_up.png"></button>
+                        <button class="icon-btn" onclick="onArrDown(event)"><img class="icon-img" src="icons/arrow_down.png"></button>
+                    </div>
+                
+                    <button class="icon-btn" onclick="onTxtPos('start')"><img class="icon-img" src="icons/format_align_left.png"></button>
+                    <button class="icon-btn" onclick="onTxtPos('center')"><img class="icon-img" src="icons/format_align_center.png"></button>
+                    <button class="icon-btn" onclick="onTxtPos('end')"><img class="icon-img" src="icons/format_align_right.png"></button>
+    
                     
                 </div>    
             
                 <section class="publish">
+                    <!-- <button  class="publish-btn" onclick="onSave()">Save</button> -->
                     <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
                     <button  class="publish-btn" onclick="onUploadImg()">Upload on FB </button>
                 </section>
             </section>
         </dive>
+    </main>
+    <main class="memes hide">
+        <section class="img-container"></section>
     </main>
     
     <script src="js/sharing-on-facebook.js"></script>

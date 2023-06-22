@@ -1,4 +1,8 @@
 'use strict'
+const STORAGE_KEY = 'MemesDB'
+
+var gMemes = []
+
 var gMeme = {
   selectedImgId: 2,
   selectedLineIdx: 0,
@@ -113,5 +117,18 @@ function drawFrame(line){
   // gCtx.fillStyle = 'black'
   // gCtx.fillRect(line.pos.x, line.pos.y, 50, 20)
 
+}
+
+function saveMeme(){
+  gMemes.push(gMeme)
+  saveToStorage(STORAGE_KEY, gMemes)
+}
+
+function renderMemes(){
+  document.querySelector('.gallery').classList.add('hide')
+  document.querySelector('.editor-container').classList.add('hide')
+  document.querySelector('.memes').classList.remove('hide') 
+  gMemes = loadFromStorage(STORAGE_KEY)
+  gMemes.forEach(gMeme=> renderMeme)
 }
 
