@@ -15,9 +15,14 @@ function initCanvas() {
 function renderMeme() {
   drawImgFromlocal()
   renderEditor()
-  setTxtWidth()
 }
 
+function renderEditor() {
+  var ind = gMeme.selectedLineIdx
+  console.log('ind', ind)
+  document.querySelector('#input-txt').value = gMeme.lines[ind].txt
+  document.querySelector('#color').value = gMeme.lines[ind].color
+}
 
 function onCngTxt(txt) {
   setLineTxt(txt)
@@ -30,7 +35,7 @@ function onCngColor(color) {
 }
 
 function onChgFontSize(ev, sign) {
-  ev.preventDefault()
+  // ev.preventDefault()
   setFontSize(sign)
   renderMeme()
 }
@@ -39,6 +44,7 @@ function onSetFont(value){
   setLineFont(value)
   renderMeme()
 }
+
 function onAddLine(ev) {
   // ev.preventDefault()
   addLine()
@@ -50,47 +56,30 @@ function onTxtPos(newPos){
   renderMeme()  
 }
 
-function onSave(){
-  saveMeme() 
-}
 function onArrUp() {
   if (gMeme.selectedLineIdx <= 0) return
   gMeme.selectedLineIdx--
   renderEditor()
-  var line = gMeme.lines[gMeme.selectedLineIdx]
   renderMeme()
-  // drawFrame(line)
 }
 
 function onArrDown() {
   if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) return
   gMeme.selectedLineIdx++
   renderEditor()
-  var line = gMeme.lines[gMeme.selectedLineIdx]
   renderMeme()
   
 }
 
-function renderEditor() {
-  var ind = gMeme.selectedLineIdx
-  console.log('ind', ind)
-  document.querySelector('#input-txt').value = gMeme.lines[ind].txt
-  document.querySelector('#color').value = gMeme.lines[ind].color
-}
-
-
 function onDown(ev) {
-  // Get the ev pos from mouse or touch
+  
   const pos = getEvPos(ev)
-  // console.log('pos', pos)
-  // console.log('example',isTxtClicked(pos))
-  let line = getDragedLine(pos)
+  let line = getSelectedLine(pos)
   console.log('line',line)
   if (!line) return
+  renderMeme()
   line.isDrag = true
   gDrugedLine = line
-  // setTxtDrag(true)
-  // //Save the pos we start from
   gStartPos = pos
   document.body.style.cursor = 'grabbing'
 }
@@ -144,10 +133,11 @@ function getEvPos(ev) {
   return pos
 }
 
-
-
-
 function onDownloadImg(elLink) {
   const imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
 }
+
+// function onSave(){
+//   saveMeme() 
+// }

@@ -47,7 +47,7 @@ canvas {
 
 .icon-btn {
   border: 1px solid white;
-  background-color: DodgerBlue;
+  background-color: #4267b2;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -60,12 +60,8 @@ canvas {
 
 @media screen and (max-width: 768px) {
   .memes {
-    background-color: #19f876;
     display: grid;
-    /* grid-template-columns: 1fr; */
     grid-template-rows: 1fr  1fr;
-    
-    /* display:flex; */
     gap: 10px;
 
   }
@@ -73,13 +69,11 @@ canvas {
   canvas {
     grid-column: 1;
     grid-row: 1;
-
   }
 
   .editor {
     grid-column: 1;
     grid-row: 2;
-    /* width: 30%; */
 
   }
 
