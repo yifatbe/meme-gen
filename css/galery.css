@@ -5,7 +5,7 @@
 }
 
 .img-card {
-    width: 30%;
+    width: 23%;
     margin: .5em;
     border: 1px solid lightgray;
     border-radius: .2em;
@@ -16,6 +16,14 @@
 
 .form{
     display: block;
+}
+
+@media screen and (max-width: 768px) {
+
+    .img-card {
+        width: 28%; 
+    }  
+
 }
 
 

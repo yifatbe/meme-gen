@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" />
+    
     <link rel="stylesheet" href="css/galery.css" />
+    <link rel="stylesheet" href="css/editor.css" />
     <link rel="stylesheet" href="css/memes.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>meme generator</title>
 </head>
 <body onload="onInit()">
     <header>
-    <a href="index.html" class="logo">MemeGen</a>
-    <nav>
-        <a href="" onclick="onGallery()">Gallery</a>
-        <a href="" onclick="onMemes()" >Memes</a>
-        <!-- <a href="">About</a> -->
-    </nav>
+        <a href="index.html" class="logo">MemeGen</a>
+        <nav>
+            <a href="" onclick="onGallery()">Gallery</a>
+            <a  onclick="onMemes(event)" >Memes</a>
+            <!-- <a href="">About</a> -->
+        </nav>
+        <!-- <button onclick="toggleMenu()" class="menu-toggle">☰</button> -->
     </header>
     <main class="gallery">
         <form class="search">
@@ -25,57 +29,64 @@
         </form>
         <section class="img-container"></section>
     </main>
-    <main class="editor-container hide">
-        <div class="memes">
-            <section class="preview">
-                <canvas id="my-canvas" height="450" width="450" onclick1="onDraw(event)">
-                </canvas>          
-            </section>
-            <section class="editor">
+    <main class="editor-container hide"> 
+        <!-- <section class="preview"> -->
+            <canvas class="editor-canvas" id="my-canvas" height="650" width="650" onclick1="onDraw(event)">
+            </canvas>          
+        <!-- </section> -->
+        <section class="editor">
+            <div>
+                <input id="input-txt" type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
+            </div>
+            <div>
+                <input id="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
+                <select class="font-name" onchange="onSetFont(value)">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Comic San MS">Comic San MS</option>
+                </select>
                 <div>
-                    <input id="input-txt" type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
+                    <button class="icon-btn" onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/text_increase.png"></button>
+                    <button class="icon-btn" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/text_decrease.png"></button>          
+                    <button class="icon-btn" onclick="onAddLine(event)"><img class="icon-img" src="icons/add.png"></button>
+                </div>
+                 <div>
+                    <button class="icon-btn" onclick="onDeleteLine(event)"><img class="icon-img" src="icons/delete.png"></button>
+                    <button class="icon-btn" onclick="onArrUp(event)"><img class="icon-img" src="icons/arrow_up.png"></button>
+                    <button class="icon-btn" onclick="onArrDown(event)"><img class="icon-img" src="icons/arrow_down.png"></button>
                 </div>
                 <div>
-                    <input id="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
-                    <select class="font-name" onchange="onSetFont(value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Comic San MS">Comic San MS</option>
-                    </select>
-                    <div>
-                        <button class="icon-btn" onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/text_increase.png"></button>
-                        <button class="icon-btn" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/text_decrease.png"></button>          
-                        <button class="icon-btn" onclick="onAddLine(event)"><img class="icon-img" src="icons/add.png"></button>
-                        <button class="icon-btn" onclick="onDeleteLine(event)"><img class="icon-img" src="icons/delete.png"></button>
-                        <button class="icon-btn" onclick="onArrUp(event)"><img class="icon-img" src="icons/arrow_up.png"></button>
-                        <button class="icon-btn" onclick="onArrDown(event)"><img class="icon-img" src="icons/arrow_down.png"></button>
-                    </div>
-                
                     <button class="icon-btn" onclick="onTxtPos('start')"><img class="icon-img" src="icons/format_align_left.png"></button>
                     <button class="icon-btn" onclick="onTxtPos('center')"><img class="icon-img" src="icons/format_align_center.png"></button>
                     <button class="icon-btn" onclick="onTxtPos('end')"><img class="icon-img" src="icons/format_align_right.png"></button>
-    
-                    
-                </div>    
-            
-                <section class="publish">
-                    <!-- <button  class="publish-btn" onclick="onSave()">Save</button> -->
-                    <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
-                    <button  class="publish-btn" onclick="onUploadImg()">Upload on FB </button>
-                </section>
+                </div>
+
+                
+            </div>    
+        
+            <section class="publish">
+                <button  class="publish-btn" onclick="onSave()">Save</button>
+                <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
+                <button  class="publish-btn" onclick="onUploadImg()">Upload on FB </button>
             </section>
-        </dive>
+        </section>   
     </main>
     <main class="memes hide">
-        <section class="img-container"></section>
+        <section class="memes-container"></section>
     </main>
+
+    <section class="user-msg">
+        <h4 class="msg-txt">user msg</h4>
+      </section>
+    
     
     <script src="js/sharing-on-facebook.js"></script>
-  <script src="js/meme-service.js"></script>
-  <script src="js/meme-controller.js"></script>
-  <script src="js/gallery-service.js"></script>
-  <script src="js/gallery-controller.js"></script>
-  <script src="js/main.js"></script>
+    <script src="js/memes-controller.js"></script>
+    <script src="js/editor-service.js"></script>
+    <script src="js/editor-controller.js"></script>
+    <script src="js/gallery-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>

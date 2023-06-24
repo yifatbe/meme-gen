@@ -1,0 +1,132 @@
+.editor-container {
+  background-color: #dfafaf;
+  display: grid;
+  grid-template-columns: 3fr  1fr;
+  /* gap: 10px; */
+
+}
+
+
+.editor-canvas {
+  grid-column: 1;
+  margin-inline-start: 10px;
+  margin-block-start: 10px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  width: 60vw;
+}
+
+.editor {
+  margin-inline-start: 15%;
+  /* margin-block-start: 10px; */
+  padding: 10px;
+  grid-column: 2;
+  width: 40vw;
+}
+
+
+.publish-btn {
+  background: #4267b2;
+  border: 1px solid white;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 5px;
+  white-space: nowrap;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+.icon-btn {
+  border: 1px solid white;
+  background-color: #4267b2;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.icon-img {
+  max-width: 18px;
+}
+/* 
+.menu-toggle {
+  display: none;
+} */
+
+
+@media screen and (max-width: 768px) {
+  .editor-container {
+    display: grid;
+    grid-template-rows: 2fr  1fr;
+    gap: 10px;
+
+  }
+
+  .editor-canvas {
+    grid-column: 1;
+    grid-row: 1;
+    width: 90vw;
+    
+  }
+
+  .editor {
+    grid-column: 1;
+    grid-row: 2;
+    width: 90vw;
+
+  }
+
+/*   
+  .menu-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+
+    font-size: 2rem;
+    color: #fff;
+    background-color: transparent;
+
+    cursor: pointer;
+  } */
+/*   
+  .menu-toggle:hover {
+    color: var(--hover-clr);
+  }
+
+  .menu-toggle {
+    text-indent: -9999em;
+    position: relative;
+  }
+
+  .menu-toggle:after {
+    text-indent: 0;
+    content: 'X';
+  } */
+
+
+}
+
+.user-msg {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #333;
+  padding: 0.1rem 2rem;
+  border-radius: 0.8em;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(150%);
+  color: #f3f3f3;
+}
+.user-msg.open {
+  transform: translateX(0);
+}

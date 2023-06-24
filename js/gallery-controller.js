@@ -12,6 +12,8 @@ function renderGallery() {
 function onImgSelect(id){ 
     document.querySelector('.gallery').classList.add('hide')
     document.querySelector('.editor-container').classList.remove('hide') 
+    document.querySelector('#input-txt').focus()
+    
     setImg(id)
     renderMeme()
 }
