@@ -17,6 +17,11 @@ function renderMeme(isDownload = false) {
   renderEditor()
 }
 
+function onDeleteLine(){
+  deleteLine()
+  renderMeme()
+}
+
 function renderEditor() {
   var ind = gMeme.selectedLineIdx
   console.log('ind', ind)
@@ -75,8 +80,10 @@ function onDown(ev) {
   
   const pos = getEvPos(ev)
   let line = getSelectedLine(pos)
+  
   console.log('line',line)
   if (!line) return
+  // gMeme.selectedLineIdx = 
   renderMeme()
   line.isDrag = true
   gDrugedLine = line

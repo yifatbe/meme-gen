@@ -11,11 +11,11 @@ var gMeme = {
     {
       txt: 'Start Here',
       font: 'Impact',
-      fontSize: 20,
-      color: '#4267b2',
+      fontSize: 50,
+      color: '#0000ff',
       pos: { x: 150, y: 40 },
       textAlign: 'start',
-      width: 0,
+      width: 200,
       isDrag: false
     },
     // {
@@ -45,6 +45,13 @@ function drawImgFromlocal(isDownload = false) {
   }
 }
 
+function deleteLine(){
+
+  let ind = gMeme.selectedLineIdx
+  console.log('ind',ind)
+  gMeme.lines.splice(ind,1)
+}
+
 function drawText(meme, memeCanvas) {
   meme.lines.forEach(line => {
     var x = line.pos.x
@@ -56,11 +63,12 @@ function drawText(meme, memeCanvas) {
     memeCanvas.textAlign = 'start'
 
     memeCanvas.fillText(line.txt, x, y)
+    line.width = memeCanvas.measureText(line.txt).width
   });
 }
 
 function drawFrame() {
-  setTxtWidth()
+  // setTxtWidth()
   let line = gMeme.lines[gMeme.selectedLineIdx]
   let x = line.pos.x - 10
   let width = line.width + 20
@@ -79,8 +87,10 @@ function setImg(id) {
 }
 
 function setLineFont(value) {
-  var ind = gMeme.selectedLineIdx
-  gMeme.lines[ind].font = value
+  let ind = gMeme.selectedLineIdx
+  let line = gMeme.lines[ind]
+  line.font = value
+  
 }
 
 function setLineTxt(txt) {
@@ -91,15 +101,16 @@ function setLineTxt(txt) {
 }
 
 function setLineColor(color) {
-  // debugger
+
   var ind = gMeme.selectedLineIdx
   gMeme.lines[ind].color = color
 }
 
 function setFontSize(sign) {
   var ind = gMeme.selectedLineIdx
-  if (sign === '+') gMeme.lines[ind].fontSize += 3
-  else if (sign === '-') gMeme.lines[ind].fontSize -= 3
+  let line = gMeme.lines[ind]
+  if (sign === '+') line.fontSize += 3
+  else if (sign === '-') line.fontSize -= 3
 
 }
 
@@ -110,11 +121,11 @@ function addLine() {
   var line = {
     txt: 'new line',
     font: 'Impact',
-    fontSize: 20,
+    fontSize: 50,
     color: '#0000ff',
     pos: { x: newX, y: newY },
     textAlign: 'start',
-    width: 0,
+    width: 150,
     isDrag: false
   }
 
@@ -139,18 +150,7 @@ function cngTxtPos(newPos) {
 
 function getSelectedLine(clickedPos) {
   console.log('clickedPos', clickedPos)
-
-  // let ind =gMeme.lines.findIndex(line => {
-  //   (  clickedPos.x >= line.pos.x && 
-  //     clickedPos.x<= line.pos.x+line.width &&
-  //     clickedPos.y >= line.pos.y-line.fontSize && 
-  //     clickedPos.y<=line.pos.y)  })
-  // console.log('line',line)
-  // let endX = line.pos.x+line.width
-  // let startY = line.pos.y-line.fontSize
-  // console.log('endX',endX)
-  // console.log('startY',startY)
-  // if    
+   
   let line
   for (var i = 0; i < gMeme.lines.length; i++) {
 
@@ -160,6 +160,7 @@ function getSelectedLine(clickedPos) {
       clickedPos.x <= line.pos.x + line.width &&
       clickedPos.y >= line.pos.y - line.fontSize &&
       clickedPos.y <= line.pos.y) {
+      
       gMeme.selectedLineIdx = i
       return line
     }
@@ -179,7 +180,9 @@ function moveTxtLine(dx, dy) {
 function setTxtWidth() {
   gMeme.lines.forEach(line => {
     line.width = gCtx.measureText(line.txt).width
+    console.log('example',line.width)
   })
+  
 }
 
 function addListeners() {
@@ -198,13 +201,6 @@ function addTouchListeners() {
   gCanvas.addEventListener('touchmove', onMove)
   gCanvas.addEventListener('touchend', onUp)
 }
-
-// function setTxtDrag(ind, isDrag) {
-//   let line
-//   if (ind === -1) line = gMeme.lines.find(line => isDrag)
-//   console.log('line', line)
-//   gMeme.lines[ind].isDrag = isDrag
-// }
 
 
 function makeId(length = 4) {
