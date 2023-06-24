@@ -31,7 +31,7 @@ var gMeme = {
   ]
 }
 
-function drawImgFromlocal() {
+function drawImgFromlocal(isDownload = false) {
   const img = new Image()
   var selectedImg = getImg(gMeme.selectedImgId)
 
@@ -41,8 +41,7 @@ function drawImgFromlocal() {
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
     drawText(gMeme,gCtx)
-    
-    drawFrame()
+    if (!isDownload) drawFrame()
   }
 }
 
@@ -67,9 +66,12 @@ function drawText(meme, memeCanvas) {
 function drawFrame() {
   setTxtWidth()
   let line = gMeme.lines[gMeme.selectedLineIdx]
-  let height = line.fontSize + 2
-  gCtx.strokeStyle = 'gray'
-  gCtx.strokeRect(line.pos.x - 2, line.pos.y - height, line.width + 4, height + 4)
+  let x = line.pos.x - 10
+  let width = line.width + 20
+  let height = line.fontSize + 20
+  let y = line.pos.y - height +10
+  gCtx.strokeStyle = 'white'
+  gCtx.strokeRect(x, y, width, height)
 }
 
 function getMeme() {
@@ -93,6 +95,7 @@ function setLineTxt(txt) {
 }
 
 function setLineColor(color) {
+  debugger
   var ind = gMeme.selectedLineIdx
   gMeme.lines[ind].color = color
 }

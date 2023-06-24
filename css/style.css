@@ -25,25 +25,23 @@ header {
   font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
-  color: white;
+  color: rgb(244, 146, 195);
 }
 
-.logo:visited {
+/* .logo:visited {
   color: white;
-}
+} */
 
 nav :not(:last-child) {
   margin-right: 16px;
 }
 
 nav a {
-  color: whitesmoke;
+  color: rgb(244, 146, 195);
   text-decoration: none;
+  cursor: pointer;
 }
 
-nav a:visited {
-  color: rgb(244, 146, 195);
-}
 
 .hide{
     display: none;

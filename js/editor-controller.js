@@ -12,8 +12,8 @@ function initCanvas() {
 
 }
 
-function renderMeme() {
-  drawImgFromlocal()
+function renderMeme(isDownload = false) {
+  drawImgFromlocal(isDownload)
   renderEditor()
 }
 
@@ -134,12 +134,16 @@ function getEvPos(ev) {
 }
 
 function onDownloadImg(elLink) {
+   renderMeme(true)
+  
   const imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
   _setUserMsg('meme downloaded')
+  //  renderMeme(false)
 }
 
 function onSave(){
+  renderMeme(true)
   saveMeme() 
   _setUserMsg('meme saved')
 }
