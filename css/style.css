@@ -1,16 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap');
 
+:root {
+  /* --border-width: 10px; */
+/* 
+  --clr6: #cb997e;
+  --clr5: #ddbea9;
+  --clr4: #ffe8d6;
+  --clr3: #b7b7a4; */
+  --clr2: #0a9396;
+  --clr1: #212427;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  /* margin: 10px; */
   font-family: 'Poppins', sans-serif;
 }
 
 header {
-  background-color: #212427;
+  background-color: var(--clr1);
   color: white;
   height: 60px;
   display: flex;
@@ -25,28 +36,22 @@ header {
   font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
-  color: rgb(244, 146, 195);
+  color: var(--clr2);
 }
-
-/* .logo:visited {
-  color: white;
-} */
 
 nav :not(:last-child) {
   margin-right: 16px;
 }
 
 nav a {
-  color: rgb(244, 146, 195);
+  color:var(--clr2);
   text-decoration: none;
   cursor: pointer;
 }
 
-
 .hide{
     display: none;
 }
-
 
 .user-msg {
   position: fixed;
@@ -61,4 +66,9 @@ nav a {
 }
 .user-msg.open {
   transform: translateX(0);
+}
+
+button{
+  background: var(--clr2);
+  border-radius: 4px;
 }

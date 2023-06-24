@@ -3,13 +3,12 @@
 function onInit(){
     console.log('oninit')
     initCanvas()
-    gMemes = loadFromStorage(STORAGE_KEY)
-    if (!gMemes) gMemes=[]
+    loadSavedMemes()
+
 
     addListeners()
     renderGallery()
-    
-    
+     
 }
 
 function onMemes(){

@@ -24,9 +24,21 @@
     </header>
     <main class="gallery">
         <div class="search">    
-            <input id='search-input' type="search" placeholder="Search" >
+            <input id="search-input" type="search" placeholder="Search" >
             <button onclick="onSetSearch()">Search</button>
         </div>
+        <nav class="filter-nav">
+            <!-- <h2 class="logo">Filter by:</h2> -->
+            <a id="funny" onclick="onSetSearch('funny')">funny</a>
+            <a id="baby" onclick="onSetSearch('baby')">baby</a>
+            <a id="politic" onclick="onSetSearch('politic')">politic</a>          
+            <a id="movie" onclick="onSetSearch('movie')">movie</a> 
+            <a id="men" onclick="onSetSearch('men')">men</a>
+            <a id="pet" onclick="onSetSearch('pet')">pet</a>
+        </nav>   
+           
+        
+
         <section class="img-container"></section>
     </main>
     <main class="editor-container hide"> 
@@ -80,11 +92,12 @@
       </section>
     
     
-    <script src="js/sharing-on-facebook.js"></script>
+    <script src="js/services/sharing-on-facebook.js"></script>
     <script src="js/memes-controller.js"></script>
-    <script src="js/editor-service.js"></script>
+    <script src="js/services/memes-service.js"></script>
+    <script src="js/services/editor-service.js"></script>
     <script src="js/editor-controller.js"></script>
-    <script src="js/gallery-service.js"></script>
+    <script src="js/services/gallery-service.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/main.js"></script>
 

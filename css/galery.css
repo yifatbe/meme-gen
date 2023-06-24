@@ -18,6 +18,28 @@
     display: block;
 }
 
+.filter-nav {
+    background-color: var(--clr1);
+    color: white;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 4px;
+    /* width: 80%; */
+    /* margin-block: 5px; */
+  }
+
+  .filter-nav a {
+    font-size: 1em;
+    color:var(--clr2);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  
 @media screen and (max-width: 768px) {
 
     .img-card {

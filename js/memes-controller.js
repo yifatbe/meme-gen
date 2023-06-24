@@ -1,17 +1,5 @@
 'use strict'
 
-
-
-// function renderMemes() {
-//     var  gMemes= load
-//     var strHtmls = galImgs.map(img => `
-//         <img class="img-card" src="${img.url}" onclick="onImgSelect(${img.id})">
-//         `
-//     )
-//     document.querySelector('.img-container').innerHTML = strHtmls.join('')
-// }
-
-
 function renderMemes() {
     // ev.preventDefault()
   document.querySelector('.gallery').classList.add('hide')
@@ -24,11 +12,11 @@ function renderMemes() {
     )
 
     document.querySelector('.memes-container').innerHTML = strHtmls.join('')
-    gMemes.forEach(meme => renderExistMeme(meme))
+    gMemes.forEach(meme => renderSavedMeme(meme))
 
 }
 
-function renderExistMeme(meme){
+function renderSavedMeme(meme){
     let memeId = `#canvas${meme.id}`
     let memeCanvas = document.querySelector(memeId)
     let memeCtx = memeCanvas.getContext('2d')
