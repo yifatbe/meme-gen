@@ -3,7 +3,9 @@
 let gStartPos= {x:0, y:0}
 let gCanvas
 let gCtx
-let gDrugedLine
+// let gDrugedLine
+let gIsDrag
+
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function initCanvas() {
@@ -24,7 +26,7 @@ function onDeleteLine(){
 
 function renderEditor() {
   var ind = gMeme.selectedLineIdx
-  console.log('ind', ind)
+  // console.log('ind', ind)
   document.querySelector('#input-txt').value = gMeme.lines[ind].txt
   document.querySelector('#color').value = gMeme.lines[ind].color
 }
@@ -79,14 +81,14 @@ function onArrDown() {
 function onDown(ev) {
   
   const pos = getEvPos(ev)
-  let line = getSelectedLine(pos)
-  
-  console.log('line',line)
+  let line = setSelectedLine(pos)
+  // console.log('line',line)
   if (!line) return
   // gMeme.selectedLineIdx = 
   renderMeme()
-  line.isDrag = true
-  gDrugedLine = line
+  // line.isDrag = true
+  // gDrugedLine = line
+  gIsDrag = true
   gStartPos = pos
   document.body.style.cursor = 'grabbing'
 }
@@ -95,12 +97,12 @@ function onMove(ev) {
   // let dragedLine = gMeme.lines.find(line => line.isDrag) 
   // console.log('dragedLine',dragedLine)
 
-  if (!gDrugedLine || !gDrugedLine.isDrag) return
- 
+  // if (!gDrugedLine || !gDrugedLine.isDrag) return
+  if (!gIsDrag) return
   const pos = getEvPos(ev)
   // Calc the delta, the diff we moved
-  console.log('pos',pos)
-  console.log('gStartPos',gStartPos)
+  // console.log('pos',pos)
+  // console.log('gStartPos',gStartPos)
 
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
@@ -113,9 +115,9 @@ function onMove(ev) {
 
 function onUp() {
   // setTxtDrag(-1, false)
-  if (!gDrugedLine) return
-  gDrugedLine.isDrag = false
-  
+  // if (!gDrugedLine) return
+  // gDrugedLine.isDrag = false
+  gIsDrag = false
   document.body.style.cursor = 'default'
 }
 
@@ -124,6 +126,8 @@ function getEvPos(ev) {
   let pos = {
     x: ev.offsetX,
     y: ev.offsetY,
+    //   x: ev.clientX,
+    // y: ev.clientY,
   }
 
   if (TOUCH_EVS.includes(ev.type)) {

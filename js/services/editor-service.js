@@ -16,7 +16,7 @@ var gMeme = {
       pos: { x: 150, y: 40 },
       textAlign: 'start',
       width: 200,
-      isDrag: false
+      // isDrag: false
     },
     // {
     //   txt: 'second line',
@@ -48,7 +48,7 @@ function drawImgFromlocal(isDownload = false) {
 function deleteLine(){
 
   let ind = gMeme.selectedLineIdx
-  console.log('ind',ind)
+  // console.log('ind',ind)
   gMeme.lines.splice(ind,1)
 }
 
@@ -109,8 +109,8 @@ function setLineColor(color) {
 function setFontSize(sign) {
   var ind = gMeme.selectedLineIdx
   let line = gMeme.lines[ind]
-  if (sign === '+') line.fontSize += 3
-  else if (sign === '-') line.fontSize -= 3
+  if (sign === '+') line.fontSize += 5
+  else if (sign === '-') line.fontSize -= 5
 
 }
 
@@ -148,20 +148,26 @@ function cngTxtPos(newPos) {
   if (newPos === 'center') line.pos.x = gCanvas.width / 2 - width / 2
 }
 
-function getSelectedLine(clickedPos) {
+function setSelectedLine(clickedPos) {
   console.log('clickedPos', clickedPos)
+  console.log('gMeme.lines', gMeme.lines)
    
   let line
   for (var i = 0; i < gMeme.lines.length; i++) {
-
     line = gMeme.lines[i]
-    console.log('line', line)
-    if (clickedPos.x >= line.pos.x &&
-      clickedPos.x <= line.pos.x + line.width &&
-      clickedPos.y >= line.pos.y - line.fontSize &&
-      clickedPos.y <= line.pos.y) {
+    // console.log('line pos', line.pos)
+    let startX = line.pos.x
+    let startY = line.pos.y - line.fontSize
+    let endX = line.pos.x + line.width
+    let endY = line.pos.y
+    console.log('x: y:',startX,endX,startY,endY)
+    if (clickedPos.x >= startX &&
+      clickedPos.x <= endX &&
+      clickedPos.y >= startY &&
+      clickedPos.y <= endY) {
       
       gMeme.selectedLineIdx = i
+      console.log('selected line',gMeme.selectedLineIdx)
       return line
     }
   }
@@ -169,9 +175,10 @@ function getSelectedLine(clickedPos) {
 }
 
 function moveTxtLine(dx, dy) {
-  let line = gMeme.lines.find(line => line.isDrag)
-  if (!line) return
-  console.log('line', line)
+  let ind = gMeme.selectedLineIdx
+  let line = gMeme.lines[ind]
+  // if (!line) return
+  // console.log('line', line)
   line.pos.x += dx
   line.pos.y += dy
 

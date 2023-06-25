@@ -48,34 +48,33 @@
         <!-- </section> -->
         <section class="editor">
             <div>
-                <input id="input-txt" type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
+                <input id="input-txt"  type="text" placeholder="text 1" oninput="onCngTxt(this.value)" >          
             </div>
             <div>
-                <input id="color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
-                <select class="font-name" onchange="onSetFont(value)">
+                <select  class="font-name" onchange="onSetFont(value)">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="Comic San MS">Comic San MS</option>
                 </select>
-                <div>
-                    <button class="icon-btn" onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/text_increase.png"></button>
-                    <button class="icon-btn" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/text_decrease.png"></button>          
-                    <button class="icon-btn" onclick="onAddLine(event)"><img class="icon-img" src="icons/add.png"></button>
-                </div>
-                 <div>
-                    <button class="icon-btn" onclick="onDeleteLine(event)"><img class="icon-img" src="icons/delete.png"></button>
-                    <button class="icon-btn" onclick="onArrUp(event)"><img class="icon-img" src="icons/arrow_up.png"></button>
-                    <button class="icon-btn" onclick="onArrDown(event)"><img class="icon-img" src="icons/arrow_down.png"></button>
-                </div>
-                <div>
-                    <button class="icon-btn" onclick="onTxtPos('start')"><img class="icon-img" src="icons/format_align_left.png"></button>
-                    <button class="icon-btn" onclick="onTxtPos('center')"><img class="icon-img" src="icons/format_align_center.png"></button>
-                    <button class="icon-btn" onclick="onTxtPos('end')"><img class="icon-img" src="icons/format_align_right.png"></button>
-                </div>
+                <input id="color" data-title="change color" type="color" value='#ff0000' oninput="onCngColor(this.value)" />
+            </div>
+            <div>
+                <button class="icon-btn" data-title="move to the next line" onclick="onArrUp(event)"><img class="icon-img" src="icons/arrow_up.png"></button>
+                <button class="icon-btn" data-title="move to previous line " onclick="onArrDown(event)"><img class="icon-img" src="icons/arrow_down.png"></button>
+                <button class="icon-btn" data-title="add new line" onclick="onAddLine(event)"><img class="icon-img" src="icons/add.png"></button>
+                <button class="icon-btn" data-title="remove line" onclick="onDeleteLine(event)"><img class="icon-img" src="icons/delete.png"></button>
+            </div>
+            <div>
+                <button class="icon-btn" data-title="increase font"onclick="onChgFontSize(event,'+')"><img class="icon-img" src="icons/text_increase.png"></button>
+                <button class="icon-btn" data-title="decrease font" onclick="onChgFontSize(event, '-')"><img class="icon-img" src="icons/text_decrease.png"></button>                   
+            </div>
+            
+            <div>
+                <button class="icon-btn" data-title="left text" onclick="onTxtPos('start')"><img class="icon-img" src="icons/format_align_left.png"></button>
+                <button class="icon-btn" data-title="center text" onclick="onTxtPos('center')"><img class="icon-img" src="icons/format_align_center.png"></button>
+                <button class="icon-btn" data-title="right text" onclick="onTxtPos('end')"><img class="icon-img" src="icons/format_align_right.png"></button>
+            </div>
 
-                
-            </div>    
-        
             <section class="publish">
                 <button  class="publish-btn" onclick="onSave()">Save</button>
                 <a href="#" class="publish-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
