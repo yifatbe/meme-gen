@@ -30,26 +30,13 @@
 }
 
 
-.publish-btn {
-  background: #4267b2;
-  border: 1px solid white;
-  font-size: 14px;
-  color: white;
-  cursor: pointer;
-  font-family: Helvetica, Arial, sans-serif;
-  margin: 5px;
-  white-space: nowrap;
-  padding: 5px;
-  border-radius: 5px;
-  text-decoration: none;
-}
 
 
 .icon-btn {
   border: 1px solid white;
   background-color: #4267b2;
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -80,6 +67,7 @@
     width: 90vw;
 
   }
+
 }
 
 [data-title] {  
@@ -108,19 +96,37 @@
   color: var(--clr2);
   width: 33vw;
   height:40px;
+  cursor: pointer;
 }
 
 .font-name {
   padding: 10px;
   border-radius: 28px;
   color: var(--clr2);
-  width: 10vw;
+  width: 20vw;
   height:40px;
+  cursor: pointer;
 }
 
-#color {
+
+.publish-btn {
+  background: #4267b2;
+  border: 1px solid white;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 5px;
+  white-space: nowrap;
+  padding: 5px;
+  border-radius: 28px;
+  text-decoration: none;
+  width:   50px;
+  
+}
+/* #color {
   padding: 10px;
   border-radius: 5px;
   width: 4vw;
   height:4vw;
-}
+} */
